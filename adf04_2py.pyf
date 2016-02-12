@@ -1,0 +1,127 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+subroutine xxdata_04(iunit,ndlev,ndtrn,ndmet,ndqdn,nvmax,titled,iz,iz0,iz1,bwno,npl,bwnoa,lbseta,prtwta,cprta,il,qdorb,lqdorb,qdn,iorb,ia,cstrga,isa,ila,xja,wa,cpla,npla,ipla,zpla,nv,scef,itran,maxlev,tcode,i1a,i2a,aval,scom,beth,iadftyp,lprn,lcpl,lorb,lbeth,letyp,lptyp,lrtyp,lhtyp,lityp,lstyp,lltyp,itieactn,ltied) ! in xxdata04_string.for
+    integer :: iunit
+    integer, optional,check(len(ia)>=ndlev),depend(ia) :: ndlev=len(ia)
+    integer, optional,check(shape(tcode,0)==ndtrn),depend(tcode) :: ndtrn=shape(tcode,0)
+    integer, optional,check(len(bwnoa)>=ndmet),depend(bwnoa) :: ndmet=len(bwnoa)
+    integer, optional,check(len(qdn)>=ndqdn),depend(qdn) :: ndqdn=len(qdn)
+    integer, optional,check(len(scef)>=nvmax),depend(scef) :: nvmax=len(scef)
+    character*3 :: titled
+    integer :: iz
+    integer :: iz0
+    integer :: iz1
+    real*8 :: bwno
+    integer :: npl
+    real*8 dimension(ndmet) :: bwnoa
+    logical dimension(ndmet),depend(ndmet) :: lbseta
+    real*8 dimension(ndmet),depend(ndmet) :: prtwta
+    character dimension(ndmet,9),depend(ndmet) :: cprta
+    integer :: il
+    real*8 dimension((ndqdn*(ndqdn+1))/2),depend(ndqdn) :: qdorb
+    logical dimension((ndqdn*(ndqdn+1))/2),depend(ndqdn) :: lqdorb
+    real*8 dimension(ndqdn) :: qdn
+    integer :: iorb
+    integer dimension(ndlev) :: ia
+    character dimension(ndlev,(*)),depend(ndlev) :: cstrga
+    integer dimension(ndlev),depend(ndlev) :: isa
+    integer dimension(ndlev),depend(ndlev) :: ila
+    real*8 dimension(ndlev),depend(ndlev) :: xja
+    real*8 dimension(ndlev),depend(ndlev) :: wa
+    character dimension(ndlev,1),depend(ndlev) :: cpla
+    integer dimension(ndlev),depend(ndlev) :: npla
+    integer dimension(ndmet,ndlev),depend(ndmet,ndlev) :: ipla
+    real*8 dimension(ndmet,ndlev),depend(ndmet,ndlev) :: zpla
+    integer :: nv
+    real*8 dimension(nvmax) :: scef
+    integer :: itran
+    integer :: maxlev
+    character dimension(ndtrn,1) :: tcode
+    integer dimension(ndtrn),depend(ndtrn) :: i1a
+    integer dimension(ndtrn),depend(ndtrn) :: i2a
+    real*8 dimension(ndtrn),depend(ndtrn) :: aval
+    real*8 dimension(nvmax,ndtrn),depend(nvmax,ndtrn) :: scom
+    real*8 dimension(ndtrn),depend(ndtrn) :: beth
+    integer :: iadftyp
+    logical :: lprn
+    logical :: lcpl
+    logical :: lorb
+    logical :: lbeth
+    logical :: letyp
+    logical :: lptyp
+    logical :: lrtyp
+    logical :: lhtyp
+    logical :: lityp
+    logical :: lstyp
+    logical :: lltyp
+    integer :: itieactn
+    logical dimension(ndlev),depend(ndlev) :: ltied
+end subroutine xxdata_04
+function i4unit(iunit) ! in i4unit.for
+    integer :: iunit
+    integer :: i4unit
+end function i4unit
+subroutine xxword(ctext,cdelim,nfirst,iwords,ifirst,ilast,nwords) ! in xxword.for
+    character*(*) :: ctext
+    character*(*) :: cdelim
+    integer :: nfirst
+    integer, optional,check(len(ifirst)>=iwords),depend(ifirst) :: iwords=len(ifirst)
+    integer dimension(iwords) :: ifirst
+    integer dimension(iwords),depend(iwords) :: ilast
+    integer :: nwords
+end subroutine xxword
+subroutine xxslen(cstrng,ifirst,ilast) ! in xxslen.for
+    character*(*) :: cstrng
+    integer :: ifirst
+    integer :: ilast
+end subroutine xxslen
+subroutine xxprs1(ndmet,string_bn,wno,cpl,npt,ipla,zpla,ifail) ! in xxprs1.for
+    integer*4, optional,check(len(ipla)>=ndmet),depend(ipla) :: ndmet=len(ipla)
+    character*(*) :: string_bn
+    real*8 :: wno
+    character*1 :: cpl
+    integer*4 :: npt
+    integer*4 dimension(ndmet) :: ipla
+    real*8 dimension(ndmet),depend(ndmet) :: zpla
+    integer*4 :: ifail
+end subroutine xxprs1
+function r8fctn(str,iabt) ! in r8fctn.for
+    character*(*) :: str
+    integer :: iabt
+    real*8 :: r8fctn
+end function r8fctn
+function i4fctn(str,iabt) ! in i4fctn.for
+    character*(*) :: str
+    integer :: iabt
+    integer :: i4fctn
+end function i4fctn
+function i4idfl(n,l) ! in i4idfl.for
+    integer :: n
+    integer :: l
+    integer :: i4idfl
+end function i4idfl
+subroutine xxpars(ndmet,strng1,npt,bwnoa,lseta,prtwta,cprta,ifail,itype) ! in xxpars.for
+    integer*4, optional,check(len(bwnoa)>=ndmet),depend(bwnoa) :: ndmet=len(bwnoa)
+    character*(*) :: strng1
+    integer*4 :: npt
+    real*8 dimension(ndmet) :: bwnoa
+    logical dimension(ndmet),depend(ndmet) :: lseta
+    real*8 dimension(ndmet),depend(ndmet) :: prtwta
+    character dimension(ndmet,(*)),depend(ndmet) :: cprta
+    integer*4 :: ifail
+    integer*4 :: itype
+end subroutine xxpars
+subroutine xxrmve(cstrg1,cstrg2,crmve) ! in xxrmve.for
+    character*(*) :: cstrg1
+    character*(*) :: cstrg2
+    character*1 :: crmve
+end subroutine xxrmve
+subroutine xxcase(input,output,type_bn) ! in xxcase.for
+    character*(*) :: input
+    character*(*) :: output
+    character*2 :: type_bn
+end subroutine xxcase
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
